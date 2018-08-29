@@ -1,0 +1,53 @@
+
+package guia4eje2;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
+public class Guia4Eje2 {
+
+   
+    public static void main(String[] args) 
+    {
+        Scanner f;
+        String []a = null;
+                
+        try {
+            f = new Scanner(new File("es.txt"));
+            String aux  =f.useDelimiter("\\A").next();
+            a = aux.split("\n");
+        
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Guia4Eje2.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        ordenar(a);
+
+    }
+    
+    public static void ordenar(String a[])
+    {
+         for(int p=1;p<a.length;p++)
+        {
+            String var=a[p];
+            
+            
+            for(int j=p;j>0 && var.compareTo(a[j-1])<0;j--)
+            {
+                a[j]=a[j-1];
+                a[j-1]=var;
+                
+            }
+                
+        }
+        
+        System.out.println("arreglo ordenado");
+        for(int k=0;k<a.length;k++)
+            System.out.print(a[k]+" ");
+        
+    }
+}
